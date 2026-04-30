@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+/* :root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #fff;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --accent: #aa3bff;
+  --accent-bg: rgba(170, 59, 255, 0.1);
+  --accent-border: rgba(170, 59, 255, 0.5);
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #16171d;
+    --border: #2e303a;
+    --code-bg: #1f2028;
+    --accent: #c084fc;
+    --accent-bg: rgba(192, 132, 252, 0.15);
+    --accent-border: rgba(192, 132, 252, 0.5);
+    --social-bg: rgba(47, 48, 58, 0.5);
+    --shadow:
+      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  }
+
+  #social .button-icon {
+    filter: invert(1) brightness(2);
+  }
+} */
+
+body {
+  margin: 0;
+}
+
+#root {
+  width: 1440px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border-inline: 1px solid var(--border);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+a{
+  text-decoration: none;
+  color: var(--text);
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+   font-family: "Montserrat", sans-serif;
+
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+
+p {
+  margin: 0;
+   font-family: "Montserrat", sans-serif;
+}
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}
+
+li {
+  list-style: none;
+}
+
+
+.App {
+  display: flex;
+  flex-direction: column;
+  width: 1440px;
+}
+
+
+/* ========================HERO=========================== */
+.hero {
+  background-image: url("./assets/heroHeader.png");
+  height: 595px;
+}
+
+.hero_h1 {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 40px;
+  /* leading-trim: NONE; */
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: white;
+}
+
+.hero_p {
+  font-family: Montserrat;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 24px;
+  /* leading-trim: NONE; */
+  line-height: 100%;
+  letter-spacing: 0%;
+  /* text-align: right; */
+  color: white;
+}
+
+
+.hero-form {
+  width: 625;
+  height: 42px;
+  top: 533px;
+  left: 407px;
+  /* angle: 0 deg; */
+  opacity: 1;
+  border-radius: 10px;
+
+}
+
+.hero-form-inp {
+  width: 580px;
+  height: 42px;
+  top: 533px;
+  left: 407px;
+  /* angle: 0 deg; */
+  opacity: 1;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-right-width: 2px;
+  background-color: #D9D9D9;
+  border: none;
+}
+
+
+.hero-form-btn {
+  width: 45px;
+  height: 42px;
+  top: 533px;
+  left: 987px;
+  /* angle: 0 deg; */
+  opacity: 1;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-left-width: 2px;
+  background-color: #FFB36C;
+  border: none;
+}
+
+/* ============================Nav============================== */
+
+.nav {
+  border-bottom: 1px solid var(--border);
+  height: 40px;
+}
+
+.nav_ul {
+  display: flex;
+  gap: 32px;
+  padding: 16px 0;
+  margin: 0;
+  justify-content: center;
+}
+
+
+
+.current-forecast {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.flex {
+  display: flex;
+  gap: 58px;
+  justify-content: center;
+  align-items: center;
+}
+
+.inf {
+  width: 290px;
+  height: 217px;
+  border-radius: 10px;
+  background-color: #D9D9D9;
+  margin-bottom: 40px;
+  color: #000;
+}
+
+.inf-ul {
+  width: 1140px;
+  height: 554px;
+  border-radius: 20px;
+  background-color: #E8E8E8;
+}
+
+/* ============================Weather Forecast==============================  */
+
+.weather-card {
+  width: 300px;
+  height: 390px;
+  top: 735px;
+  left: 560px;
+  background-color: #E8E8E8;
+  opacity: 1;
+  border-width: 1px;
+
+}
+
+.card-img{
+  width: 100px;
+  height: 100px;
+}
+
+.card-data .card-temp{
+  font-family: Montserrat;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 24px;
+  /* leading-trim: NONE; */
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #000000;
+}
