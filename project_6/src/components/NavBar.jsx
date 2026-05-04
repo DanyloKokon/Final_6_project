@@ -1,5 +1,9 @@
 import logo from '../assets/logo.svg';
-function NavBar() {
+function NavBar({isReg, setIsReg}) {
+
+    
+
+
     return (
         <nav className="nav">
             <img src={logo} alt="Logo" className="logo" />
@@ -10,7 +14,7 @@ function NavBar() {
             </ul>
 
             
-            <button className="sinup">
+            <button className="sinup" onClick={() => setIsReg(true)}>
                 <span className="sinup-text">Sign Up</span>
             </button>
         </nav>

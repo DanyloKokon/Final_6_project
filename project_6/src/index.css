@@ -199,6 +199,36 @@ li {
   cursor: pointer;
 }
 
+/* ============================ REG FORM ============================== */
+.registration-form {
+  background-color: #E8E8E8;
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  width: 600px;
+  height: 534px;
+  opacity: 1;
+  border-radius: 25px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.outframe{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* ============================ NAV ============================== */
 .nav {
   border-bottom: 1px solid var(--border, #eee);
@@ -343,17 +373,17 @@ li {
   width: 1440px;
   height: 179px;
   top: 3962px;
- 
+
   opacity: 1;
   background-color: #FFB36C;
 }
 
-.footer-ul{
+.footer-ul {
   display: flex;
- gap: 103px;
+  gap: 103px;
 }
 
-.footer-adress-h4{
+.footer-adress-h4 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: 16px;
@@ -361,7 +391,7 @@ li {
   color: #000000;
 }
 
-.footer-adress-content{
+.footer-adress-content {
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 14px;

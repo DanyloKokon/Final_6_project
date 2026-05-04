@@ -7,7 +7,7 @@ import CurrentForecast from './components/CurrentForecast'
 import MoreForecastInfo from './components/MoreForecastInfo'
 import ChartSection from './components/ChartSec'
 import Footer from './components/Footer'
-
+import RegistrationForm from './components/RegistrationForm'
 
 
 
@@ -15,6 +15,7 @@ function App() {
   const [country, setCountry] = useState('New York')
   const [cureentWeather, setCurrentWeather] = useState(null)
   const [whClicked, setWhClicked] = useState('')
+  const [isRegistered, setIsRegistered] = useState(false)
 
   useEffect(() => {
     WeatherCoordinatesApi(country)
@@ -31,7 +32,8 @@ function App() {
   return (
     <>
       <div className="App">
-        <NavBar />
+        <NavBar isReg={isRegistered} setIsReg={setIsRegistered} />
+        {isRegistered && <div className='outframe'><div className='registration-form'><RegistrationForm /></div></div>}
         <section className='hero-section'>
           <div className='hero'>
             <div className='hero_h1'>
