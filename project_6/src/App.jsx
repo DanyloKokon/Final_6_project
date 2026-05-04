@@ -5,6 +5,12 @@ import './App.css'
 import WeatherCoordinatesApi from './components/WeatherCooApi'
 import CurrentForecast from './components/CurrentForecast'
 import MoreForecastInfo from './components/MoreForecastInfo'
+import ChartSection from './components/ChartSec'
+import Footer from './components/Footer'
+
+
+
+
 function App() {
   const [country, setCountry] = useState('New York')
   const [cureentWeather, setCurrentWeather] = useState(null)
@@ -26,14 +32,14 @@ function App() {
     <>
       <div className="App">
         <NavBar />
-        <section>
+        <section className='hero-section'>
           <div className='hero'>
             <div className='hero_h1'>
-              <h1>Weather dashboard</h1>
+              <h1 className='hero-h1-h1'>Weather dashboard</h1>
             </div>
             <div className='hero_p'>
               <p>Create your personal list of favorite cities and always be aware of the weather.</p>
-              <p>October 2023 Friday, 13th</p>
+              <p>{new Date().toLocaleDateString()}</p>
             </div>
             <div className='hero_form'>
               <HeroForm setCountry={setCountry} />
@@ -44,9 +50,12 @@ function App() {
           <section className='forecast'>
             <CurrentForecast currentWeather={cureentWeather} location={country} setWhClicked={setWhClicked} />
             {whClicked !== '' && <MoreForecastInfo currentWeather={cureentWeather} whClicked={whClicked} />}
+            {whClicked !== '' && <ChartSection data={cureentWeather} whClicked={whClicked} />}
           </section>
         </main>
-        <footer></footer>
+        <footer>
+          <Footer />
+        </footer>
       </div>
     </>
   )
