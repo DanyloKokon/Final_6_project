@@ -1,4 +1,5 @@
 import React from 'react';
+import { VscChromeClose } from "react-icons/vsc";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
@@ -16,10 +17,10 @@ const RegistrationSchema = Yup.object().shape({
     .required('Password is required'),
 });
 
-const RegistrationForm = () => {
+const RegistrationForm = ({ setOp }) => {
   return (
     <div style={{ maxWidth: '400px', margin: 'auto' }}>
-      <h2>Register</h2>
+      <h2 className='modal-reg'>Register</h2>
       <Formik
         initialValues={{ name: '', email: '', password: '' }}
         validationSchema={RegistrationSchema}
@@ -34,8 +35,9 @@ const RegistrationForm = () => {
         }}
       >
         {({ isSubmitting }) => (
-          <Form style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+          <Form className='modal-form'>
             {/* Name Field */}
+            <button className='modal-close' onClick={() => setOp(false)}><VscChromeClose /></button>
             <div>
               <label htmlFor="name">Full Name</label>
               <Field name="name" type="text" placeholder="John Doe" />
@@ -57,7 +59,7 @@ const RegistrationForm = () => {
             </div>
 
             {/* Registration Button */}
-            <button type="submit" disabled={isSubmitting}>
+            <button type="submit" className='modal-btn' disabled={isSubmitting}>
               {isSubmitting ? 'Registering...' : 'Register'}
             </button>
           </Form>

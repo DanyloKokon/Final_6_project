@@ -31,9 +31,10 @@ function App() {
 
   return (
     <>
+    
       <div className="App">
         <NavBar isReg={isRegistered} setIsReg={setIsRegistered} />
-        {isRegistered && <div className='outframe'><div className='registration-form'><RegistrationForm /></div></div>}
+        {isRegistered && <div className='outframe'><div className='modal'><RegistrationForm setOp={setIsRegistered} /></div></div>}
         <section className='hero-section'>
           <div className='hero'>
             <div className='hero_h1'>
@@ -48,6 +49,7 @@ function App() {
             </div>
           </div>
         </section>
+        
         <main>
           <section className='forecast'>
             <CurrentForecast currentWeather={cureentWeather} location={country} setWhClicked={setWhClicked} />

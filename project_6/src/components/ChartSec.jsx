@@ -12,6 +12,7 @@ function ChartSection({ data, whClicked }) {
 
         const hours = forecastDay.hour.map(h => h.time.split(' ')[1]);
         const temps = forecastDay.hour.map(h => h.temp_c);
+        const winds = forecastDay.hour.map(h => h.wind_kph);
         const conditions = forecastDay.hour.map(h => h.condition.text);
 
         const ctx = document.getElementById('chartOne');
@@ -33,7 +34,15 @@ function ChartSection({ data, whClicked }) {
                         // backgroundColor: 'none',
                         borderWidth: 2,
                         // fill: true,
-                        tension: 0.4,
+                        tension: 0.1,
+                    }, {
+                        label: 'Wind Speed (kph)',
+                        data: winds,
+                        borderColor: '#6C63FF',
+                        // backgroundColor: 'none',
+                        borderWidth: 2,
+                        // fill: true,
+                        tension: 0.1,
                     }
                 ]
             },
@@ -53,7 +62,7 @@ function ChartSection({ data, whClicked }) {
                         beginAtZero: false,
                         title: {
                             display: true,
-                            text: 'Temperature (°C)'
+                            text: '°C & km/h'
                         }
                     },
                     x: {
@@ -73,11 +82,11 @@ function ChartSection({ data, whClicked }) {
         };
     }, [data, whClicked]);
 
-    return ( <>
+    return (<>
         <div className="inf-ul">
             <canvas id="chartOne" />
         </div>
-    </> );
+    </>);
 }
 
 export default ChartSection;

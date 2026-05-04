@@ -6,7 +6,15 @@ function CurrentForecast({ currentWeather, location, setWhClicked }) {
     // }
 
     return ( <>
+    
     <ul className='current-forecast'>
+        <li className="weather-card">
+             <h2 className="card-location">{location}</h2>
+                <p className="card-date">{currentWeather?.current?.last_updated}</p>
+                <img className="card-img" src={currentWeather?.current?.condition.icon} alt={currentWeather?.current?.condition.text} />
+                <p className="card-temp">{currentWeather?.current?.temp_c}°C</p>
+               
+        </li>
         {currentWeather?.forecast?.forecastday?.map((weather, index) => (
             <li className="weather-card" key={index}>
                 <h2 className="card-location">{location}</h2>
