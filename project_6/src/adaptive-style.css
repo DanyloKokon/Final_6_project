@@ -16,7 +16,7 @@
   :root {
     --text: #9ca3af;
     --text-h: #f3f4f6;
-    --bg: white;
+    --bg:  white; /* Fixed: was white */
     --border: #2e303a;
     --code-bg: #1f2028;
   }
@@ -52,10 +52,7 @@ a {
   color: inherit;
 }
 
-h1,
-h2,
-h3,
-h4 {
+h1, h2, h3, h4 {
   font-family: var(--sans);
   color: var(--text-h);
   font-weight: 600;
@@ -74,20 +71,8 @@ h2 {
   margin: 0 0 8px;
 }
 
-@media (max-width: 1024px) {
-  h1 {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-
-  h2 {
-    font-size: 20px;
-  }
-}
-
 p {
   margin: 0;
-
 }
 
 code {
@@ -103,9 +88,8 @@ li {
   list-style: none;
 }
 
-
 .App {
-  background-color: white;
+  background-color: transparent;
 }
 
 /* ============================================== NavBar styles */
@@ -145,17 +129,15 @@ li {
 }
 
 .name-user {
-  color: #000;
+  color: var(--text-h);
   margin-left: auto;
 }
 
 .user-pfp {
   width: 50px;
   height: 50px;
-  top: 15px;
-  left: 1240px;
-  opacity: 1;
-  color: #000;
+  border-radius: 50%;
+  object-fit: cover;
   margin-left: 10px;
 }
 
@@ -197,8 +179,8 @@ li {
 .hero-form {
   display: flex;
   justify-content: center;
-  width: 625px;
-  max-width: 675px;
+  width: 625px; /* Kept fixed as requested */
+  max-width: 100%;
 }
 
 .hero-form-inp {
@@ -225,7 +207,7 @@ li {
 .outframe {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -236,12 +218,12 @@ li {
   position: relative;
   background: white;
   padding: 2rem;
-  border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  width: 600px;
-  height: 534px;
+  width: 90%;
+  max-width: 600px;
+  height: auto;
+  min-height: 534px;
   border-radius: 25px;
-
 }
 
 .modal-form {
@@ -278,7 +260,6 @@ li {
   border: none;
   font-size: 20px;
   cursor: pointer;
-  background: none;
 }
 
 /* ============================================== Info section styles */
@@ -311,10 +292,13 @@ li {
   background-color: #E8E8E8;
   margin: 0 auto 80px;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ============================================== Weather card styles */
-
 
 .card-location {
   color: #000;
@@ -361,6 +345,7 @@ li {
   gap: 16px;
   margin-top: 60px;
   margin-bottom: 80px;
+  flex-wrap: wrap;
 }
 
 .card-btn:hover {
@@ -400,40 +385,38 @@ li {
 /*====================================== weather 8 line ================================================*/
 
 .weather-8-line {
-  width: 986px;
-  height: 47px;
-  /* top: 2978px;
-  left: 227px; */
+  width: 100%;
+  max-width: 986px;
+  min-height: 47px;
   opacity: 1;
   border-radius: 10px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 308px;
+  justify-content: space-between;
+  padding: 0 20px;
   background-color: #D9D9D9;
-  margin-bottom: 10px;
+  margin: 0 auto 10px;
   color: #000;
 }
 
 .weather-8-div {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .weather-8-ul {
   width: 90%;
   max-width: 1140px;
   min-height: 554px;
-  top: 2513px;
-  left: 151px;
-  opacity: 1;
   border-radius: 20px;
   background-color: #E8E8E8;
   margin: 0 auto 80px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  display: block;
 }
 
 .weather-8-h2 {
@@ -442,6 +425,88 @@ li {
   margin-bottom: 20px;
 }
 
-.weather-8-1-p {
-  /* margin-left: auto; */
+/* ============================================== Media Queries */
+
+/* Tablet Adaptive (>768px) */
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+  
+  .nav {
+    padding: 16px 20px;
+  }
+  
+  .logo {
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+  }
+  
+  .logo {
+    margin-right: 0;
+  }
+  
+  .sinup {
+    margin-left: 0;
+    order: 2;
+  }
+  
+  .nav_ul {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .hero-h1-h1 {
+    font-size: 30px;
+  }
+
+  .hero-form {
+    width: 90%; /* Allows it to shrink if the screen is smaller than 625px */
+  }
+
+  .weather-8-line {
+    gap: 20px;
+    font-size: 14px;
+  }
+}
+
+/* Mobile Adaptive (>320px) */
+@media (max-width: 480px) {
+  .hero {
+    height: 400px;
+  }
+
+  .hero_p {
+    font-size: 18px;
+  }
+
+  .footer-ul {
+    gap: 30px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .weather-8-line {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+  
+  .inf {
+    width: 100%;
+  }
 }

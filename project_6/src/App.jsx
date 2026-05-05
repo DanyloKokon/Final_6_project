@@ -2,39 +2,47 @@ import { useEffect, useState } from 'react'
 import NavBar from './components/NavBar'
 import HeroForm from './components/HeroForm'
 import './App.css'
-import WeatherCoordinatesApi from './components/WeatherCooApi'
+import WeatherCoordinatesApi from './components/Api/WeatherCooApi'
 import CurrentForecast from './components/CurrentForecast'
 import MoreForecastInfo from './components/MoreForecastInfo'
 import ChartSection from './components/ChartSec'
 import Footer from './components/Footer'
 import RegistrationForm from './components/RegistrationForm'
-
-
+import Day8ForecastApi from './components/Api/Day8ForecastApi'
+import Day8Forecast from './components/Day8Foreacst'
 
 function App() {
+  const [user, setUserValues] = useState(null)
   const [country, setCountry] = useState('New York')
   const [cureentWeather, setCurrentWeather] = useState(null)
+  const [Day8, setDay8] = useState(null)
   const [whClicked, setWhClicked] = useState('')
   const [isRegistered, setIsRegistered] = useState(false)
 
   useEffect(() => {
     WeatherCoordinatesApi(country)
       .then(data => {
-       setCurrentWeather(data)
-       console.log(data)
+        setCurrentWeather(data)
+        console.log(data)
       })
       .catch(error => console.error('Error fetching coordinates:', error));
   }, [country]);
 
- 
-
+  useEffect(() => {
+    Day8ForecastApi(country)
+      .then(data => {
+        setDay8(data)
+        console.log(data)
+      })
+      .catch(error => console.error('Error fetching 8-day forecast:', error));
+  }, [country]);
 
   return (
     <>
-    
+
       <div className="App">
-        <NavBar isReg={isRegistered} setIsReg={setIsRegistered} />
-        {isRegistered && <div className='outframe'><div className='modal'><RegistrationForm setOp={setIsRegistered} /></div></div>}
+        <NavBar user={user} isReg={isRegistered} setIsReg={setIsRegistered} />
+        {isRegistered && <div className='outframe'><div className='modal'><RegistrationForm setValues={setUserValues} setOp={setIsRegistered} /></div></div>}
         <section className='hero-section'>
           <div className='hero'>
             <div className='hero_h1'>
@@ -49,12 +57,13 @@ function App() {
             </div>
           </div>
         </section>
-        
+
         <main>
           <section className='forecast'>
             <CurrentForecast currentWeather={cureentWeather} location={country} setWhClicked={setWhClicked} />
             {whClicked !== '' && <MoreForecastInfo currentWeather={cureentWeather} whClicked={whClicked} />}
             {whClicked !== '' && <ChartSection data={cureentWeather} whClicked={whClicked} />}
+            {whClicked !== '' && <Day8Forecast data={Day8}/>}
           </section>
         </main>
         <footer>

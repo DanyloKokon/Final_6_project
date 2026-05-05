@@ -17,7 +17,7 @@ const RegistrationSchema = Yup.object().shape({
     .required('Password is required'),
 });
 
-const RegistrationForm = ({ setOp }) => {
+const RegistrationForm = ({ setOp , setValues }) => {
   return (
     <div style={{ maxWidth: '400px', margin: 'auto' }}>
       <h2 className='modal-reg'>Register</h2>
@@ -28,6 +28,7 @@ const RegistrationForm = ({ setOp }) => {
           // Simulate an API call
           setTimeout(() => {
             console.log('Registration Data:', values);
+            setValues(values)
             alert('Registration Successful!');
             setSubmitting(false);
             resetForm();

@@ -1,5 +1,6 @@
 import logo from '../assets/logo.svg';
-function NavBar({isReg, setIsReg}) {
+import { VscGithub } from "react-icons/vsc";
+function NavBar({isReg, setIsReg, user}) {
 
     
 
@@ -14,9 +15,11 @@ function NavBar({isReg, setIsReg}) {
             </ul>
 
             
-            <button className="sinup" onClick={() => setIsReg(true)}>
+            {user === null && <button className="sinup" onClick={() => setIsReg(true)}>
                 <span className="sinup-text">Sign Up</span>
-            </button>
+            </button>}
+            {user !== null && <p className='name-user'>Hi {user.name}</p>}
+            {user !== null && <VscGithub className='user-pfp'/>}
         </nav>
     );
 }
