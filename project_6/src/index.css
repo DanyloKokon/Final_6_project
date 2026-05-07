@@ -12,7 +12,7 @@
   --sans: "Montserrat", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --text: #9ca3af;
     --text-h: #f3f4f6;
@@ -20,7 +20,7 @@
     --border: #2e303a;
     --code-bg: #1f2028;
   }
-}
+} */
 
 * {
   box-sizing: border-box;
@@ -145,7 +145,7 @@ li {
 }
 
 .name-user {
-  color: #000;
+  color: var(--text-h);
   margin-left: auto;
 }
 
@@ -155,7 +155,7 @@ li {
   top: 15px;
   left: 1240px;
   opacity: 1;
-  color: #000;
+  /* color: #000; */
   margin-left: 10px;
 }
 

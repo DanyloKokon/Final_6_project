@@ -10,6 +10,8 @@ import Footer from './components/Footer'
 import RegistrationForm from './components/RegistrationForm'
 import Day8ForecastApi from './components/Api/Day8ForecastApi'
 import Day8Forecast from './components/Day8Foreacst'
+import NewsApi from './components/Api/NewsApi'
+
 
 function App() {
   const [user, setUserValues] = useState(null)
@@ -36,6 +38,13 @@ function App() {
       })
       .catch(error => console.error('Error fetching 8-day forecast:', error));
   }, [country]);
+
+  useEffect(()=>{
+    NewsApi()
+    .then(data =>{
+      console.log(data);
+    })
+  })
 
   return (
     <>
@@ -64,6 +73,9 @@ function App() {
             {whClicked !== '' && <MoreForecastInfo currentWeather={cureentWeather} whClicked={whClicked} />}
             {whClicked !== '' && <ChartSection data={cureentWeather} whClicked={whClicked} />}
             {whClicked !== '' && <Day8Forecast data={Day8}/>}
+          </section>
+          <section className='news-animals'>
+          {}
           </section>
         </main>
         <footer>
