@@ -12,8 +12,6 @@
   --sans: "Montserrat", sans-serif;
 }
 
-
-
 * {
   box-sizing: border-box;
 }
@@ -63,9 +61,7 @@ h2 {
   margin: 0 0 8px;
 }
 
-p {
-  margin: 0;
-}
+p { margin: 0; }
 
 code {
   font-family: var(--mono);
@@ -76,13 +72,9 @@ code {
   color: var(--text-h);
 }
 
-li {
-  list-style: none;
-}
+li { list-style: none; }
 
-.App {
-  background-color: transparent;
-}
+.App { background-color: transparent; }
 
 /* ============================================== NavBar styles */
 
@@ -91,19 +83,20 @@ li {
   padding: 16px 40px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
 }
 
 .logo {
   width: 82px;
   height: auto;
-  margin-right: 60px;
+  flex-shrink: 0;
 }
 
 .nav_ul {
   display: flex;
   gap: 32px;
-  margin: 0;
+  margin: 0 60px; 
   padding: 0;
   align-items: center;
 }
@@ -118,6 +111,7 @@ li {
   display: flex;
   align-items: center;
   justify-content: center;
+  white-space: nowrap;
 }
 
 .name-user {
@@ -171,7 +165,7 @@ li {
 .hero-form {
   display: flex;
   justify-content: center;
-  width: 625px; /* Kept fixed as requested */
+  width: 625px; 
   max-width: 100%;
 }
 
@@ -204,6 +198,7 @@ li {
   justify-content: center;
   align-items: center;
   z-index: 999;
+  padding: 20px;
 }
 
 .modal {
@@ -211,11 +206,12 @@ li {
   background: white;
   padding: 2rem;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  width: 90%;
+  width: 100%;
   max-width: 600px;
-  height: auto;
   min-height: 534px;
   border-radius: 25px;
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-form {
@@ -225,11 +221,10 @@ li {
   flex-direction: column;
   gap: 20px;
   padding: 20px;
+  flex-grow: 1;
 }
 
-.modal-reg {
-  color: #000;
-}
+.modal-reg { color: #000; }
 
 .modal-btn {
   background-color: var(--accent);
@@ -273,7 +268,14 @@ li {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center; 
   padding: 15px;
+}
+
+.inf-img {
+  width: 85px;
+  height: 85px;
+  object-fit: contain; 
 }
 
 .inf-ul {
@@ -292,9 +294,7 @@ li {
 
 /* ============================================== Weather card styles */
 
-.card-location {
-  color: #000;
-}
+.card-location { color: #000; }
 
 .weather-card {
   width: 300px;
@@ -380,12 +380,11 @@ li {
   width: 100%;
   max-width: 986px;
   min-height: 47px;
-  opacity: 1;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+  padding: 10px 20px;
   background-color: #D9D9D9;
   margin: 0 auto 10px;
   color: #000;
@@ -417,88 +416,89 @@ li {
   margin-bottom: 20px;
 }
 
+/* ============================================== News styles */
+
+.news-animals {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto 80px; 
+  padding: 20px;
+}
+
+.news-ul {
+  gap: 20px;
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center;
+  padding: 0;
+}
+
+.news-li {
+  width: 290px;
+}
+
+.news-img {
+  width: 270px;
+  height: 208px;
+  border-radius: 10px;
+  object-fit: cover; 
+}
+
 /* ============================================== Media Queries */
 
-/* Tablet Adaptive (>768px) */
+/* Tablet Adaptive */
 @media (max-width: 1024px) {
-  h1 {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-
-  h2 {
-    font-size: 20px;
-  }
-  
-  .nav {
-    padding: 16px 20px;
-  }
-  
-  .logo {
-    margin-right: 20px;
-  }
+  h1 { font-size: 36px; margin: 20px 0; }
+  h2 { font-size: 20px; }
+  .nav { padding: 16px 20px; }
+  .nav_ul { margin: 0 20px; gap: 20px; }
 }
 
 @media (max-width: 768px) {
   .nav {
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 15px;
-    justify-content: center;
-  }
-  
-  .logo {
-    margin-right: 0;
-  }
-  
-  .sinup {
-    margin-left: 0;
-    order: 2;
+    padding-bottom: 20px;
   }
   
   .nav_ul {
     order: 3;
-    width: 100%;
-    justify-content: center;
-    gap: 15px;
+    margin: 0;
   }
 
-  .hero-h1-h1 {
-    font-size: 30px;
+  .sinup {
+    margin-left: 0;
+    order: 2;
   }
 
-  .hero-form {
-    width: 90%; /* Allows it to shrink if the screen is smaller than 625px */
-  }
-
+  .hero-h1-h1 { font-size: 30px; }
+  .hero-form { width: 90%; }
+  
   .weather-8-line {
-    gap: 20px;
-    font-size: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
   }
 }
 
-/* Mobile Adaptive (>320px) */
+/* Mobile Adaptive */
 @media (max-width: 480px) {
-  .hero {
-    height: 400px;
-  }
-
-  .hero_p {
-    font-size: 18px;
-  }
-
+  .hero { height: 400px; }
+  .hero-h1-h1 { font-size: 24px; }
+  .hero_p { font-size: 18px; }
+  
   .footer-ul {
     gap: 30px;
     flex-direction: column;
-    align-items: center;
+    text-align: center;
   }
 
   .weather-8-line {
     flex-direction: column;
-    height: auto;
-    padding: 10px;
+    padding: 15px;
   }
-  
-  .inf {
-    width: 100%;
-  }
+
+  .inf { width: 100%; }
+  .news-img { width: 100%; height: auto; }
 }

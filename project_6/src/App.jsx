@@ -11,6 +11,7 @@ import RegistrationForm from './components/RegistrationForm'
 import Day8ForecastApi from './components/Api/Day8ForecastApi'
 import Day8Forecast from './components/Day8Foreacst'
 import NewsApi from './components/Api/NewsApi'
+import AnimalNews from './components/AnimalNews'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
   const [Day8, setDay8] = useState(null)
   const [whClicked, setWhClicked] = useState('')
   const [isRegistered, setIsRegistered] = useState(false)
+  const [news, setNews] = useState(null)
 
   useEffect(() => {
     WeatherCoordinatesApi(country)
@@ -42,9 +44,10 @@ function App() {
   useEffect(()=>{
     NewsApi()
     .then(data =>{
-      console.log(data);
+      setNews(data);
+      
     })
-  })
+  }, [])
 
   return (
     <>
@@ -75,8 +78,9 @@ function App() {
             {whClicked !== '' && <Day8Forecast data={Day8}/>}
           </section>
           <section className='news-animals'>
-          {}
+            <AnimalNews news={news} />
           </section>
+        
         </main>
         <footer>
           <Footer />
