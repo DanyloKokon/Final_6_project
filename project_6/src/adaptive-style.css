@@ -42,7 +42,10 @@ a {
   color: inherit;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: var(--sans);
   color: var(--text-h);
   font-weight: 600;
@@ -61,7 +64,9 @@ h2 {
   margin: 0 0 8px;
 }
 
-p { margin: 0; }
+p {
+  margin: 0;
+}
 
 code {
   font-family: var(--mono);
@@ -72,9 +77,13 @@ code {
   color: var(--text-h);
 }
 
-li { list-style: none; }
+li {
+  list-style: none;
+}
 
-.App { background-color: transparent; }
+.App {
+  background-color: transparent;
+}
 
 /* ============================================== NavBar styles */
 
@@ -96,7 +105,7 @@ li { list-style: none; }
 .nav_ul {
   display: flex;
   gap: 32px;
-  margin: 0 60px; 
+  margin: 0 60px;
   padding: 0;
   align-items: center;
 }
@@ -165,7 +174,7 @@ li { list-style: none; }
 .hero-form {
   display: flex;
   justify-content: center;
-  width: 625px; 
+  width: 625px;
   max-width: 100%;
 }
 
@@ -224,7 +233,9 @@ li { list-style: none; }
   flex-grow: 1;
 }
 
-.modal-reg { color: #000; }
+.modal-reg {
+  color: #000;
+}
 
 .modal-btn {
   background-color: var(--accent);
@@ -268,14 +279,14 @@ li { list-style: none; }
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   padding: 15px;
 }
 
 .inf-img {
   width: 85px;
   height: 85px;
-  object-fit: contain; 
+  object-fit: contain;
 }
 
 .inf-ul {
@@ -294,7 +305,9 @@ li { list-style: none; }
 
 /* ============================================== Weather card styles */
 
-.card-location { color: #000; }
+.card-location {
+  color: #000;
+}
 
 .weather-card {
   width: 300px;
@@ -421,14 +434,14 @@ li { list-style: none; }
 .news-animals {
   width: 100%;
   max-width: 1140px;
-  margin: 0 auto 80px; 
+  margin: 0 auto 80px;
   padding: 20px;
 }
 
 .news-ul {
   gap: 20px;
   display: flex;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   justify-content: center;
   padding: 0;
 }
@@ -441,17 +454,47 @@ li { list-style: none; }
   width: 270px;
   height: 208px;
   border-radius: 10px;
-  object-fit: cover; 
+  object-fit: cover;
+}
+
+/* ============================================== Swiper styles */
+.swiper-section {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto 80px;
+  padding: 20px;
+}
+
+.swip-img {
+  width: 300px;
+  height: 190px;
+  top: 3703px;
+  left: 528px;
+  opacity: 1;
+
 }
 
 /* ============================================== Media Queries */
 
 /* Tablet Adaptive */
 @media (max-width: 1024px) {
-  h1 { font-size: 36px; margin: 20px 0; }
-  h2 { font-size: 20px; }
-  .nav { padding: 16px 20px; }
-  .nav_ul { margin: 0 20px; gap: 20px; }
+  h1 {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .nav {
+    padding: 16px 20px;
+  }
+
+  .nav_ul {
+    margin: 0 20px;
+    gap: 20px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -460,7 +503,7 @@ li { list-style: none; }
     gap: 15px;
     padding-bottom: 20px;
   }
-  
+
   .nav_ul {
     order: 3;
     margin: 0;
@@ -471,9 +514,14 @@ li { list-style: none; }
     order: 2;
   }
 
-  .hero-h1-h1 { font-size: 30px; }
-  .hero-form { width: 90%; }
-  
+  .hero-h1-h1 {
+    font-size: 30px;
+  }
+
+  .hero-form {
+    width: 90%;
+  }
+
   .weather-8-line {
     flex-wrap: wrap;
     justify-content: center;
@@ -484,10 +532,18 @@ li { list-style: none; }
 
 /* Mobile Adaptive */
 @media (max-width: 480px) {
-  .hero { height: 400px; }
-  .hero-h1-h1 { font-size: 24px; }
-  .hero_p { font-size: 18px; }
-  
+  .hero {
+    height: 400px;
+  }
+
+  .hero-h1-h1 {
+    font-size: 24px;
+  }
+
+  .hero_p {
+    font-size: 18px;
+  }
+
   .footer-ul {
     gap: 30px;
     flex-direction: column;
@@ -499,6 +555,12 @@ li { list-style: none; }
     padding: 15px;
   }
 
-  .inf { width: 100%; }
-  .news-img { width: 100%; height: auto; }
+  .inf {
+    width: 100%;
+  }
+
+  .news-img {
+    width: 100%;
+    height: auto;
+  }
 }

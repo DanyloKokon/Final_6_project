@@ -12,7 +12,7 @@ import Day8ForecastApi from './components/Api/Day8ForecastApi'
 import Day8Forecast from './components/Day8Foreacst'
 import NewsApi from './components/Api/NewsApi'
 import AnimalNews from './components/AnimalNews'
-
+import SwiperComponent from './components/Swiper'
 
 function App() {
   const [user, setUserValues] = useState(null)
@@ -80,7 +80,10 @@ function App() {
           <section className='news-animals'>
             <AnimalNews news={news} />
           </section>
-        
+          <section className='swiper-section'>
+            <h2>Beautiful nature</h2>
+            <SwiperComponent />
+          </section>
         </main>
         <footer>
           <Footer />
