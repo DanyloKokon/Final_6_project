@@ -1,5 +1,10 @@
 
-function AnimalNews({news}) {
+function AnimalNews({news, setPage}) {
+
+    const handleClick = (pr) => {
+        setPage(prevPage => prevPage + 1);
+    }
+
     return ( <>
     <ul className="news-ul">
         {news && news.articles.map((article, index) => (
@@ -10,6 +15,7 @@ function AnimalNews({news}) {
             </li>
         ))}
     </ul>
+    <button className="news-btn" onClick={handleClick}>Load More</button>
     </> );
 }
 

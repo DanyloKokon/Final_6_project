@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import NavBar from './components/NavBar'
 import HeroForm from './components/HeroForm'
 import './App.css'
@@ -13,6 +13,12 @@ import Day8Forecast from './components/Day8Foreacst'
 import NewsApi from './components/Api/NewsApi'
 import AnimalNews from './components/AnimalNews'
 import SwiperComponent from './components/Swiper'
+import Dock from './components/Bits/Dock/Dock'
+import { IoIosHome } from "react-icons/io";
+import { IoIosCloudy } from "react-icons/io";
+import { IoIosPaw } from "react-icons/io";
+import { IoMdPerson } from "react-icons/io";
+import Account from './components/Account'
 
 function App() {
   const [user, setUserValues] = useState(null)
@@ -22,6 +28,14 @@ function App() {
   const [whClicked, setWhClicked] = useState('')
   const [isRegistered, setIsRegistered] = useState(false)
   const [news, setNews] = useState(null)
+  const [page, setPage] = useState(1)
+  const [acc, setAcc] = useState(false)
+  const homeRef = useRef(null);
+  const weatherRef = useRef(null);
+  const newsRef = useRef(null);
+  
+
+
 
   useEffect(() => {
     WeatherCoordinatesApi(country)
@@ -41,21 +55,43 @@ function App() {
       .catch(error => console.error('Error fetching 8-day forecast:', error));
   }, [country]);
 
-  useEffect(()=>{
-    NewsApi()
-    .then(data =>{
-      setNews(data);
-      
-    })
-  }, [])
+  useEffect(() => {
+    NewsApi({ page })
+      .then(data => {
+        setNews(data);
+
+      })
+  }, [page])
+
+
+  const scrollToSection = (ref) => {
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const items = [
+    { icon: <IoIosHome />, label: 'Home', onClick: () => scrollToSection(homeRef) },
+    { icon: <IoIosCloudy />, label: 'Weather', onClick: () => scrollToSection(weatherRef) },
+    { icon: <IoIosPaw />, label: 'News', onClick: () => scrollToSection(newsRef) },
+     { icon: <IoMdPerson />, label: 'Account', onClick: () => setAcc(true) },
+  ];
+
+
 
   return (
     <>
 
       <div className="App">
-        <NavBar user={user} isReg={isRegistered} setIsReg={setIsRegistered} />
+        <NavBar acc={acc} user={user} isReg={isRegistered} setIsReg={setIsRegistered}>
+        </NavBar>
+
+
+
         {isRegistered && <div className='outframe'><div className='modal'><RegistrationForm setValues={setUserValues} setOp={setIsRegistered} /></div></div>}
-        <section className='hero-section'>
+        
+        {acc && <Account setAcc={setAcc} user={user} setUserValues={setUserValues} setIsRegistered={setIsRegistered} />}
+        <section ref={homeRef} className='hero-section'>
           <div className='hero'>
             <div className='hero_h1'>
               <h1 className='hero-h1-h1'>Weather dashboard</h1>
@@ -69,16 +105,15 @@ function App() {
             </div>
           </div>
         </section>
-
         <main>
-          <section className='forecast'>
+          <section ref={weatherRef} className='forecast'>
             <CurrentForecast currentWeather={cureentWeather} location={country} setWhClicked={setWhClicked} />
             {whClicked !== '' && <MoreForecastInfo currentWeather={cureentWeather} whClicked={whClicked} />}
             {whClicked !== '' && <ChartSection data={cureentWeather} whClicked={whClicked} />}
-            {whClicked !== '' && <Day8Forecast data={Day8}/>}
+            {whClicked !== '' && <Day8Forecast data={Day8} />}
           </section>
-          <section className='news-animals'>
-            <AnimalNews news={news} />
+          <section ref={newsRef} className='news-animals'>
+            <AnimalNews news={news} setPage={setPage} />
           </section>
           <section className='swiper-section'>
             <h2>Beautiful nature</h2>
@@ -86,9 +121,20 @@ function App() {
           </section>
         </main>
         <footer>
+         
           <Footer />
         </footer>
+        <div className='dock-container'>
+          <Dock
+            items={items}
+            panelHeight={68}
+            baseItemSize={50}
+            magnification={70}
+          />
+        </div>
       </div>
+
+
     </>
   )
 }

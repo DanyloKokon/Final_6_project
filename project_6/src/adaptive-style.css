@@ -26,6 +26,21 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container,
+[class*="container"] {
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 #root {
   width: 100%;
   max-width: 1440px;
@@ -229,7 +244,7 @@ li {
   align-items: center;
   flex-direction: column;
   gap: 20px;
-  padding: 20px;
+  /* padding: 20px; */
   flex-grow: 1;
 }
 
@@ -450,6 +465,22 @@ li {
   width: 290px;
 }
 
+.news-btn {
+  width: 138px;
+  height: 40px;
+  top: 3519px;
+  left: 150px;
+  border-radius: 10px;
+  opacity: 1;
+  padding-top: 10px;
+  padding-right: 30px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  gap: 10px;
+  border: none;
+  background-color: var(--accent);
+}
+
 .news-img {
   width: 270px;
   height: 208px;
@@ -471,6 +502,19 @@ li {
   top: 3703px;
   left: 528px;
   opacity: 1;
+
+}
+
+/* ============================================== Account styles */
+
+.acc-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  border: 2px solid #000;
+  
 
 }
 
@@ -563,4 +607,74 @@ li {
     width: 100%;
     height: auto;
   }
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    max-width: 768px;
+  }
+
+
+  .grid-list,
+  .flex-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .grid-item,
+  .card {
+    flex-basis: calc(50% - 20px);
+  }
+}
+
+
+@media screen and (max-width: 767px) {
+  .container {
+    max-width: 100%;
+  }
+
+
+  header .container,
+  .nav-list {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+
+  .hero-title {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+
+  .grid-item,
+  .card,
+  .section-list-item {
+    flex-basis: 100%;
+    width: 100%;
+  }
+
+
+  section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+
+  button,
+  .btn {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+
+.dock-container {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
 }

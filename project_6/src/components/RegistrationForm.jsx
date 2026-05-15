@@ -2,6 +2,7 @@ import React from 'react';
 import { VscChromeClose } from "react-icons/vsc";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import Stepper, { Step } from './Bits/Stepper/Stepper';
 
 // Define the validation rules
 const RegistrationSchema = Yup.object().shape({
@@ -17,7 +18,7 @@ const RegistrationSchema = Yup.object().shape({
     .required('Password is required'),
 });
 
-const RegistrationForm = ({ setOp , setValues }) => {
+const RegistrationForm = ({ setOp, setValues }) => {
   return (
     <div style={{ maxWidth: '400px', margin: 'auto' }}>
       <h2 className='modal-reg'>Register</h2>
@@ -37,32 +38,49 @@ const RegistrationForm = ({ setOp , setValues }) => {
       >
         {({ isSubmitting }) => (
           <Form className='modal-form'>
-            {/* Name Field */}
+
             <button className='modal-close' onClick={() => setOp(false)}><VscChromeClose /></button>
-            <div>
-              <label htmlFor="name">Full Name</label>
-              <Field name="name" type="text" placeholder="John Doe" />
-              <ErrorMessage name="name" component="div" style={{ color: 'red' }} />
-            </div>
+            <Stepper
+              initialStep={1}
+              onStepChange={(step) => {
+                console.log(step);
+              }}
+              onFinalStepCompleted={() => console.log("All steps completed!")}
+              backButtonText="Previous"
+              nextButtonText="Next"
+            >
+              <Step>
+                {/* Name Field */}
+                <div>
+                  <label htmlFor="name">Full Name</label>
+                  <Field name="name" type="text" placeholder="John Doe" />
+                  <ErrorMessage name="name" component="div" style={{ color: 'red' }} />
+                </div>
+              </Step>
+              <Step>
+                {/* Email Field */}
+                <div>
+                  <label htmlFor="email">Email</label>
+                  <Field name="email" type="email" placeholder="john@example.com" />
+                  <ErrorMessage name="email" component="div" style={{ color: 'red' }} />
+                </div>
+              </Step>
+              <Step>
+                {/* Password Field */}
+                <div>
+                  <label htmlFor="password">Password</label>
+                  <Field name="password" type="password" placeholder="********" />
+                  <ErrorMessage name="password" component="div" style={{ color: 'red' }} />
+                </div>
+              </Step>
+              <Step>
 
-            {/* Email Field */}
-            <div>
-              <label htmlFor="email">Email</label>
-              <Field name="email" type="email" placeholder="john@example.com" />
-              <ErrorMessage name="email" component="div" style={{ color: 'red' }} />
-            </div>
-
-            {/* Password Field */}
-            <div>
-              <label htmlFor="password">Password</label>
-              <Field name="password" type="password" placeholder="********" />
-              <ErrorMessage name="password" component="div" style={{ color: 'red' }} />
-            </div>
-
-            {/* Registration Button */}
-            <button type="submit" className='modal-btn' disabled={isSubmitting}>
-              {isSubmitting ? 'Registering...' : 'Register'}
-            </button>
+                {/* Registration Button */}
+                <button type="submit" className='modal-btn' disabled={isSubmitting}>
+                  {isSubmitting ? 'Registering...' : 'Register'}
+                </button>
+              </Step>
+            </Stepper>
           </Form>
         )}
       </Formik>
