@@ -20,6 +20,9 @@ import { IoIosPaw } from "react-icons/io";
 import { IoMdPerson } from "react-icons/io";
 import Account from './components/Account'
 
+
+
+
 function App() {
   const [user, setUserValues] = useState(null)
   const [country, setCountry] = useState('New York')
@@ -33,7 +36,7 @@ function App() {
   const homeRef = useRef(null);
   const weatherRef = useRef(null);
   const newsRef = useRef(null);
-  
+
 
 
 
@@ -74,7 +77,7 @@ function App() {
     { icon: <IoIosHome />, label: 'Home', onClick: () => scrollToSection(homeRef) },
     { icon: <IoIosCloudy />, label: 'Weather', onClick: () => scrollToSection(weatherRef) },
     { icon: <IoIosPaw />, label: 'News', onClick: () => scrollToSection(newsRef) },
-     { icon: <IoMdPerson />, label: 'Account', onClick: () => setAcc(true) },
+    { icon: <IoMdPerson />, label: 'Account', onClick: () => setAcc(true) },
   ];
 
 
@@ -85,12 +88,9 @@ function App() {
       <div className="App">
         <NavBar acc={acc} user={user} isReg={isRegistered} setIsReg={setIsRegistered}>
         </NavBar>
-
-
-
         {isRegistered && <div className='outframe'><div className='modal'><RegistrationForm setValues={setUserValues} setOp={setIsRegistered} /></div></div>}
-        
         {acc && <Account setAcc={setAcc} user={user} setUserValues={setUserValues} setIsRegistered={setIsRegistered} />}
+
         <section ref={homeRef} className='hero-section'>
           <div className='hero'>
             <div className='hero_h1'>
@@ -121,7 +121,7 @@ function App() {
           </section>
         </main>
         <footer>
-         
+
           <Footer />
         </footer>
         <div className='dock-container'>
