@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://danylokokon.github.io/Final_6_project/",
+  "homepage": "https://danylokokon.github.io/Final_6_project",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

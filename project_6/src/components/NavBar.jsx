@@ -1,9 +1,14 @@
 import logo from '../assets/logo.svg';
+import React, { useState, useEffect } from 'react';
+
 import { VscGithub } from "react-icons/vsc";
 
 function NavBar({ isReg, setIsReg, user, acc }) {
 
-
+    const [pfp, setPfp] = useState(() => {
+        const savedPfp = localStorage.getItem('pfp');
+        return savedPfp ? JSON.parse(savedPfp) : null;
+    });
 
 
     return (
@@ -22,7 +27,7 @@ function NavBar({ isReg, setIsReg, user, acc }) {
             </button>}
           
             {user !== null && <p className='name-user'>Hi {user.name}</p>}
-            {user !== null && <VscGithub className='user-pfp' />}
+            {user !== null && pfp && <img src={pfp} alt="Profile Picture" className="user-pfp" />}
         </nav>
     );
 }

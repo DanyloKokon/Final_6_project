@@ -24,7 +24,10 @@ import Account from './components/Account'
 
 
 function App() {
-  const [user, setUserValues] = useState(null)
+  const [user, setUserValues] = useState(() => {
+    const savedUser = localStorage.getItem('weather_app_user');
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
   const [country, setCountry] = useState('New York')
   const [cureentWeather, setCurrentWeather] = useState(null)
   const [Day8, setDay8] = useState(null)
@@ -37,6 +40,14 @@ function App() {
   const weatherRef = useRef(null);
   const newsRef = useRef(null);
 
+
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem('weather_app_user', JSON.stringify(user));
+    } else {
+      localStorage.removeItem('weather_app_user'); // Clears storage if user logs out
+    }
+  }, [user]);
 
 
 
