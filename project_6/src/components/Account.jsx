@@ -49,7 +49,7 @@ function Account({ setAcc, user, setUserValues, setIsRegistered }) {
                         e.preventDefault();
                         const formData = new FormData(e.target);
                         setPfp(formData.get("pfpUrl"));
-                    }}><input type="text" name="pfpUrl" placeholder="Enter profile picture URL" /> <button type="submit" >Upload</button></form>}
+                    }}><input className='inp-acc' type="text" name="pfpUrl" placeholder="Enter profile picture URL" /> <button className='inp-btn-acc' type="submit" >Upload</button></form>}
                     <button className="acc-btn" onClick={() => {
                         setUserValues(null);
                         setIsRegistered(false);
