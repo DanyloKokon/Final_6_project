@@ -1,6 +1,11 @@
-export default function NewsApi ({page}) {
-    return fetch(`https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/everything?q=pets&sortBy=popularity&pageSize=4&page=${page}&apiKey=d0a0007175ee4bc3b89c5353ff6f5053`)
-    .then(res => {
+export default function NewsApi({ page }) {
+    return fetch(`https://newsdata.io/api/1/latest? 
+  apikey=pub_1c3a76ea5c8945088307cee8ded92d2e
+  &q=pets
+  &image=1
+  &size=3
+  &page=${page}`)
+        .then(res => {
             if (!res.ok) {
                 throw new Error('Network response was not ok');
             }
