@@ -15,7 +15,7 @@ function AnimalNews({news, setPage}) {
             </li>
         ))}
     </ul>
-    <button className="news-btn" onClick={handleClick}>Load More</button>
+    {/* <button className="news-btn" onClick={handleClick}>Load More</button> */}
     </> );
 }
 
