@@ -70,7 +70,7 @@ function App() {
   }, [country]);
 
   useEffect(() => {
-    NewsApi({ page })
+    NewsApi()
       .then(data => {
         setNews(data);
 
