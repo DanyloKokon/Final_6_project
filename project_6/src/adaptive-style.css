@@ -115,13 +115,13 @@ li {
   width: 82px;
   height: auto;
   flex-shrink: 0;
-  
 }
 
 .nav_ul {
   display: flex;
   gap: 32px;
-  margin: 0 60px;
+  margin: 0 auto 0 60px;
+  /* Aligns menu links next to logo naturally */
   padding: 0;
   align-items: center;
 }
@@ -137,6 +137,11 @@ li {
   align-items: center;
   justify-content: center;
   white-space: nowrap;
+  transition: background 0.2s ease;
+}
+
+.sinup:hover {
+  background-color: var(--accent-hover);
 }
 
 .name-user {
@@ -248,8 +253,8 @@ li {
   align-items: center;
   flex-direction: column;
   gap: 20px;
-  /* padding: 20px; */
   flex-grow: 1;
+  width: 100%;
 }
 
 .modal-reg {
@@ -467,22 +472,22 @@ li {
 
 .news-li {
   width: 290px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .news-btn {
   width: 138px;
   height: 40px;
-  top: 3519px;
-  left: 150px;
   border-radius: 10px;
-  opacity: 1;
-  padding-top: 10px;
-  padding-right: 30px;
-  padding-bottom: 10px;
-  padding-left: 30px;
+  padding: 10px 30px;
   gap: 10px;
   border: none;
   background-color: var(--accent);
+  cursor: pointer;
+  margin-top: 10px;
+
 }
 
 .news-img {
@@ -503,10 +508,11 @@ li {
 .swip-img {
   width: 300px;
   height: 190px;
-  top: 3703px;
-  left: 528px;
-  opacity: 1;
+  object-fit: cover;
+}
 
+.phone {
+  display: none;
 }
 
 /* ============================================== Account styles */
@@ -516,10 +522,11 @@ li {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
   border: 2px solid #000;
-  
-
+  background: var(--bg);
+  padding: 20px;
 }
 
 .inp-acc {
@@ -528,8 +535,8 @@ li {
   border-radius: 10px;
   border: 1px solid var(--border);
   padding: 0 10px;
-  
 }
+
 .inp-btn-acc {
   width: 100%;
   height: 37px;
@@ -540,7 +547,7 @@ li {
   margin-top: 10px;
 }
 
-.acc-btn{
+.acc-btn {
   width: 114px;
   height: 37px;
   background-color: var(--accent);
@@ -550,14 +557,30 @@ li {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: auto;
-  margin-top: 50px;
-  margin-left: 25%;
+  margin: 50px auto 0;
+  /* Centered cleanly across layout devices */
 }
 
-/* ============================================== Media Queries */
+.dock-container {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+}
 
-/* Tablet Adaptive */
+/* ============================================== Media Queries (Clean Hierarchy) */
+
+/* Laptop / Desktop Container Rules overrides */
+@media screen and (max-width: 1200px) {
+
+  .grid-item,
+  .card {
+    flex-basis: calc(50% - 20px);
+  }
+}
+
+/* Tablet Adaptive (1024px and below) */
 @media (max-width: 1024px) {
   h1 {
     font-size: 36px;
@@ -573,26 +596,53 @@ li {
   }
 
   .nav_ul {
-    margin: 0 20px;
+    margin: 0 auto 0 20px;
+    gap: 20px;
+  }
+
+  .container {
+    max-width: 768px;
+  }
+
+  .grid-list,
+  .flex-list {
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
   }
 }
 
+/* Small Tablet Adaptive (768px and below) */
 @media (max-width: 768px) {
   .nav {
     flex-direction: column;
     gap: 15px;
     padding-bottom: 20px;
+    text-align: center;
   }
 
   .nav_ul {
-    order: 3;
-    margin: 0;
+    flex-direction: column;
+    gap: 12px;
+    margin: 10px 0;
   }
 
   .sinup {
-    margin-left: 0;
-    order: 2;
+    margin: 5px auto;
+  }
+
+  .name-user {
+    margin: 5px auto;
+  }
+
+  .user-pfp {
+    margin: 5px auto;
+  }
+
+  .logo {
+    display: block;
+    /* Visible but centered nicely in column */
+    margin: 0 auto;
   }
 
   .hero-h1-h1 {
@@ -609,10 +659,53 @@ li {
     gap: 10px;
     text-align: center;
   }
+
+  header .container,
+  .nav-list {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .hero-title {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .grid-item,
+  .card,
+  .section-list-item {
+    flex-basis: 100%;
+    width: 100%;
+  }
+
+  section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  button,
+  .btn {
+    width: 100%;
+    padding: 12px;
+  }
 }
 
-/* Mobile Adaptive */
+/* Mobile Adaptive (480px and below) */
 @media (max-width: 480px) {
+  .App {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .desktop {
+    display: none;
+  }
+
+  .phone {
+    display: block;
+  }
+
   .hero {
     height: 400px;
   }
@@ -644,74 +737,13 @@ li {
     width: 100%;
     height: auto;
   }
-}
 
-@media screen and (max-width: 1024px) {
-  .container {
-    max-width: 768px;
+  .swip-img {
+    width: 200px;
+    height: 100px;
   }
 
-
-  .grid-list,
-  .flex-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
-  .grid-item,
-  .card {
-    flex-basis: calc(50% - 20px);
-  }
-}
-
-
-@media screen and (max-width: 767px) {
   .container {
     max-width: 100%;
   }
-
-
-  header .container,
-  .nav-list {
-    flex-direction: column;
-    text-align: center;
-    gap: 15px;
-  }
-
-
-  .hero-title {
-    font-size: 28px;
-    line-height: 1.2;
-  }
-
-
-  .grid-item,
-  .card,
-  .section-list-item {
-    flex-basis: 100%;
-    width: 100%;
-  }
-
-
-  section {
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
-
-
-  button,
-  .btn {
-    width: 100%;
-    padding: 12px;
-  }
-}
-
-
-.dock-container {
-  position: fixed;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 50;
 }
