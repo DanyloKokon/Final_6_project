@@ -30,6 +30,7 @@ function App() {
     return savedUser ? JSON.parse(savedUser) : null;
   });
   const [country, setCountry] = useState('New York')
+  const [error, setError] = useState(null);
   const [cureentWeather, setCurrentWeather] = useState(null)
   const [Day8, setDay8] = useState(null)
   const [whClicked, setWhClicked] = useState('')
@@ -53,7 +54,7 @@ function App() {
 
 
   useEffect(() => {
-    WeatherCoordinatesApi(country, key)
+    WeatherCoordinatesApi(country, key, setError)
       .then(data => {
         setCurrentWeather(data)
         console.log(data)
@@ -62,7 +63,7 @@ function App() {
   }, [country, key]);
 
   useEffect(() => {
-    Day8ForecastApi(country, key)
+    Day8ForecastApi(country, key, setError)
       .then(data => {
         setDay8(data)
         console.log(data)
@@ -119,7 +120,7 @@ function App() {
         </section>
         <main>
           <section ref={weatherRef} className='forecast'>
-            <CurrentForecast currentWeather={cureentWeather} setWhClicked={setWhClicked} />
+            <CurrentForecast err={error} currentWeather={cureentWeather} setWhClicked={setWhClicked} />
             {whClicked !== '' && <MoreForecastInfo currentWeather={cureentWeather} whClicked={whClicked} />}
             {whClicked !== '' && <ChartSection data={cureentWeather} whClicked={whClicked} />}
             {whClicked !== '' && <Day8Forecast data={Day8} />}

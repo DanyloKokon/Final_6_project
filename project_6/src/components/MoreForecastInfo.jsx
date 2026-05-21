@@ -1,4 +1,3 @@
-import { VscSearchFuzzy } from "react-icons/vsc";
 import Temp from '../assets/termometr.svg'
 import Wind from '../assets/wind.svg'
 import Humidity from '../assets/humidity.svg'

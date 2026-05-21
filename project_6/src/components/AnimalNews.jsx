@@ -1,9 +1,7 @@
 
-function AnimalNews({news, setPage}) {
+function AnimalNews({news}) {
 
-    const handleClick = (pr) => {
-        setPage(prevPage => prevPage + 1);
-    }
+  
 
     return ( <>
     <ul className="news-ul">

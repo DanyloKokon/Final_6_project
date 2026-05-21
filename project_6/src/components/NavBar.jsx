@@ -1,9 +1,9 @@
 import logo from '../assets/logo.svg';
-import React, { useState, useEffect } from 'react';
+import React, { useState, } from 'react';
 
-import { VscGithub } from "react-icons/vsc";
 
-function NavBar({ isReg, setIsReg, user, acc }) {
+
+function NavBar({  setIsReg, user,  }) {
 
     const [pfp, setPfp] = useState(() => {
         const savedPfp = localStorage.getItem('pfp');

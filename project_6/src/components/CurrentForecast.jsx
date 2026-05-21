@@ -1,11 +1,16 @@
-function CurrentForecast({ currentWeather, setWhClicked }) {
-    
+import { VscError } from "react-icons/vsc";
+function CurrentForecast({ currentWeather, setWhClicked, err }) {
+    if (err) {
+        return <div className="current-forecast"><div className="weather-card"><p className="error">Error: No such location found</p> <VscError style={{ width: '100%', height: '100%' }} /></div></div>
+    }
+
     if (!currentWeather) {
         return <p className="loading">Loading weather data...</p>;
     }
 
     return (
         <>
+        
             <ul className='current-forecast'>
                 <li className="weather-card-now">
                     {/* 2. Changed to safe navigation just in case */}
