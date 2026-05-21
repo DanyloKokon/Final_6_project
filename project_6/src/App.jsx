@@ -24,6 +24,7 @@ import Account from './components/Account'
 
 
 function App() {
+  const [key, setKey] = useState('c9ab2e9f73174f93a62161141262105');
   const [user, setUserValues] = useState(() => {
     const savedUser = localStorage.getItem('weather_app_user');
     return savedUser ? JSON.parse(savedUser) : null;
@@ -52,22 +53,22 @@ function App() {
 
 
   useEffect(() => {
-    WeatherCoordinatesApi(country)
+    WeatherCoordinatesApi(country, key)
       .then(data => {
         setCurrentWeather(data)
         console.log(data)
       })
       .catch(error => console.error('Error fetching coordinates:', error));
-  }, [country]);
+  }, [country, key]);
 
   useEffect(() => {
-    Day8ForecastApi(country)
+    Day8ForecastApi(country, key)
       .then(data => {
         setDay8(data)
         console.log(data)
       })
       .catch(error => console.error('Error fetching 8-day forecast:', error));
-  }, [country]);
+  }, [country, key]);
 
   useEffect(() => {
     NewsApi()
@@ -118,7 +119,7 @@ function App() {
         </section>
         <main>
           <section ref={weatherRef} className='forecast'>
-            <CurrentForecast currentWeather={cureentWeather} location={country} setWhClicked={setWhClicked} />
+            <CurrentForecast currentWeather={cureentWeather} setWhClicked={setWhClicked} />
             {whClicked !== '' && <MoreForecastInfo currentWeather={cureentWeather} whClicked={whClicked} />}
             {whClicked !== '' && <ChartSection data={cureentWeather} whClicked={whClicked} />}
             {whClicked !== '' && <Day8Forecast data={Day8} />}
