@@ -13,7 +13,7 @@ function Footer() {
                         <li className="footer-adress-content">Ukraine</li>
                     </ul>
                 </li>
-                <li ><h4 className="footer-adress-h4">Contact us</h4></li>
+                <li ><a className="footer-adress-h4" href="mailto:contact@example.com">Contact us</a></li>
             </ul>
         </footer>
     );
