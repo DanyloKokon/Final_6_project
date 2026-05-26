@@ -41,6 +41,7 @@ const RegistrationForm = ({ setOp, setValues }) => {
 
             <button className='modal-close' onClick={() => setOp(false)}><VscChromeClose /></button>
             <Stepper
+              className="stepper"
               initialStep={1}
               onStepChange={(step) => {
                 console.log(step);
@@ -53,7 +54,7 @@ const RegistrationForm = ({ setOp, setValues }) => {
                 {/* Name Field */}
                 <div>
                   <label htmlFor="name">Full Name</label>
-                  <Field name="name" type="text" placeholder="John Doe" />
+                  <Field className="form-control" name="name" type="text" placeholder="John Doe" />
                   <ErrorMessage name="name" component="div" style={{ color: 'red' }} />
                 </div>
               </Step>
@@ -61,7 +62,7 @@ const RegistrationForm = ({ setOp, setValues }) => {
                 {/* Email Field */}
                 <div>
                   <label htmlFor="email">Email</label>
-                  <Field name="email" type="email" placeholder="john@example.com" />
+                  <Field className="form-control" name="email" type="email" placeholder="john@example.com" />
                   <ErrorMessage name="email" component="div" style={{ color: 'red' }} />
                 </div>
               </Step>
@@ -69,7 +70,7 @@ const RegistrationForm = ({ setOp, setValues }) => {
                 {/* Password Field */}
                 <div>
                   <label htmlFor="password">Password</label>
-                  <Field name="password" type="password" placeholder="********" />
+                  <Field className="form-control" name="password" type="password" placeholder="********" />
                   <ErrorMessage name="password" component="div" style={{ color: 'red' }} />
                 </div>
               </Step>
