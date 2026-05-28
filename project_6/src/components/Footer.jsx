@@ -1,3 +1,6 @@
+import { LiaDiscord } from "react-icons/lia";
+import { LiaWhatsapp } from "react-icons/lia";
+import { LiaTwitter } from "react-icons/lia";
 import React from 'react';
 import logo from '../assets/logo.svg';
 function Footer() {
@@ -13,7 +16,13 @@ function Footer() {
                         <li className="footer-adress-content">Ukraine</li>
                     </ul>
                 </li>
-                <li ><a className="footer-adress-h4" href="mailto:contact@example.com">Contact us</a></li>
+                <li ><a className="footer-adress-h4" href="mailto:contact@example.com">Contact us</a>
+                    <ul className="footer-ul-social">
+                        <li className="footer-li-social"><LiaDiscord /></li>
+                        <li className="footer-li-social"><LiaWhatsapp /></li>
+                        <li className="footer-li-social"><LiaTwitter /></li>
+                    </ul>
+                </li>
             </ul>
         </footer>
     );

@@ -47,7 +47,7 @@ function App() {
     if (user) {
       localStorage.setItem('weather_app_user', JSON.stringify(user));
     } else {
-      localStorage.removeItem('weather_app_user'); // Clears storage if user logs out
+      localStorage.removeItem('weather_app_user'); 
     }
   }, [user]);
 
@@ -101,7 +101,7 @@ function App() {
       <div className="App">
         <NavBar acc={acc} homeRef={homeRef} weatherRef={weatherRef} user={user} isReg={isRegistered} setIsReg={setIsRegistered}>
         </NavBar>
-        {isRegistered && <div className='outframe'><div className='modal'><RegistrationForm setValues={setUserValues} setOp={setIsRegistered} /></div></div>}
+        {isRegistered && <div className='outframe' ><div className='modal'><RegistrationForm setValues={setUserValues} setOp={setIsRegistered} /></div></div>}
         {acc && <Account setAcc={setAcc} user={user} setUserValues={setUserValues} setIsRegistered={setIsRegistered} />}
 
         <section ref={homeRef} className='hero-section'>
