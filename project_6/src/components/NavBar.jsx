@@ -3,7 +3,7 @@ import React, { useState, } from 'react';
 
 
 
-function NavBar({  setIsReg, user,  }) {
+function NavBar({  setIsReg, user, homeRef, weatherRef }) {
 
     const [pfp, setPfp] = useState(() => {
         const savedPfp = localStorage.getItem('pfp');
@@ -11,14 +11,19 @@ function NavBar({  setIsReg, user,  }) {
     });
 
 
+    const scrollToSection = (ref) => {
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
     return (
         <nav className="nav">
             <img src={logo} alt="Logo" className="logo" />
 
             <ul className="nav_ul">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-               
+                <li><a href="#" onClick={() => scrollToSection(homeRef)}>Home</a></li>
+                <li><a href="#" onClick={() => scrollToSection(weatherRef)}>Weather</a></li>
             </ul>
 
 

@@ -99,7 +99,7 @@ function App() {
     <>
 
       <div className="App">
-        <NavBar acc={acc} user={user} isReg={isRegistered} setIsReg={setIsRegistered}>
+        <NavBar acc={acc} homeRef={homeRef} weatherRef={weatherRef} user={user} isReg={isRegistered} setIsReg={setIsRegistered}>
         </NavBar>
         {isRegistered && <div className='outframe'><div className='modal'><RegistrationForm setValues={setUserValues} setOp={setIsRegistered} /></div></div>}
         {acc && <Account setAcc={setAcc} user={user} setUserValues={setUserValues} setIsRegistered={setIsRegistered} />}
